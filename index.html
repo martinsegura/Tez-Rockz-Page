@@ -23,8 +23,19 @@
 
     </div>
 
-    <div class=" d-flex justify-content-center">
-       
+    <div class="game rounded">
+
+        <div class="gameloading rounded">
+
+            <div class="position-absolute top-50 start-50 translate-middle spin">
+                <div class="spinner-border spinner-border-lg" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+
+        </div>
+
+
         <div id="unity-container" class="unity-desktop">
         <canvas id="unity-canvas" width=960 height=640></canvas>
         <div id="unity-loading-bar">
@@ -40,6 +51,7 @@
           <div id="unity-fullscreen-button"></div>
           <div id="unity-build-title"></div>
         </div>
+
     </div>
     
 </div>

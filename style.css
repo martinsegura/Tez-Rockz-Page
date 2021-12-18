@@ -10,3 +10,24 @@ body{
     max-width: 100%;
 }
 
+.gameloading{
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    color: #efeff1;
+    z-index: -1;
+    position: absolute;
+    background-color: #d1d1d1;
+    width: 960px;
+    height: 640px;
+}
+
+.spin{
+    width: 50rem;
+}
+
+.game{
+    z-index: 0;
+    margin: auto;
+    width: 50vw;
+}
