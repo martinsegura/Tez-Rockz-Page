@@ -10,17 +10,7 @@ body{
     max-width: 100%;
 }
 
-.gameloading{
-    align-items: center;
-    text-align: center;
-    margin: auto;
-    color: #efeff1;
-    z-index: -1;
-    position: absolute;
-    background-color: #d1d1d1;
-    width: 960px;
-    height: 640px;
-}
+
 
 .spin{
     width: 50rem;
@@ -29,5 +19,19 @@ body{
 .game{
     z-index: 0;
     margin: auto;
-    width: 50vw;
+    text-align: center;
+    /* width: 50vw; */
+}
+
+.gameloading{
+    text-align: center;
+    position: absolute;
+    background: rgb(239,239,241);
+background: linear-gradient(90deg, rgba(239,239,241,1) 10%, rgba(232,226,241,1) 50%, rgba(239,239,241,1) 90%);
+    z-index: -1;
+    background-color: #d1d1d1;
+    width: 100%;
+    height: 640px;
+    text-align: center;
+
 }
