@@ -23,11 +23,26 @@
 
     </div>
 
-    <div class="container-md d-flex justify-content-center iamthegame">
-        <p style="color: #ffffff">juego</p>
+    <div class=" d-flex justify-content-center">
+       
+        <div id="unity-container" class="unity-desktop">
+        <canvas id="unity-canvas" width=960 height=640></canvas>
+        <div id="unity-loading-bar">
+          <div id="unity-logo"></div>
+          <div id="unity-progress-bar-empty">
+              <div id="unity-progress-bar-full"></div>
+            </div>
+        </div>
+        <div id="unity-mobile-warning">
+        </div>
+        <div id="unity-footer">
+          <div id="unity-webgl-logo"></div>
+          <div id="unity-fullscreen-button"></div>
+          <div id="unity-build-title"></div>
+        </div>
     </div>
-
-
+    
+</div>
 
     <div>
         <div class="d-flex flex-column text-center">
@@ -62,7 +77,7 @@
                 </div>
 
                 <div class="card shadow-lg bg-body rounded rounded-top m-2">
-                    <img src="Basalt 750x930.png" class="card-img-top card-image" alt="...">
+                    <img src="images/Basalt 750x930.png" class="card-img-top card-image" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Basalt</h5>
                         <a class="btn btn-primary d-flex justify-content-center" href="" target="_blank">View in
@@ -71,7 +86,7 @@
                 </div>
 
                 <div class="card shadow-lg bg-body rounded rounded-top m-2">
-                    <img src="Rhyolite 750x930.png" class="card-img-top card-image" alt="...">
+                    <img src="images/Rhyolite 750x930.png" class="card-img-top card-image" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Rhyolite</h5>
                         <a class="btn btn-primary d-flex justify-content-center" href="" target="_blank">View in
@@ -80,7 +95,7 @@
                 </div>
                 
                 <div class="card shadow-lg bg-body rounded rounded-top m-2 ">
-                    <img src="Red Clay 750x930.gif" class="card-img-top card-image" alt="...">
+                    <img src="images/Red Clay 750x930.gif" class="card-img-top card-image" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Red Clay</h5>
                         <a class="btn btn-primary d-flex justify-content-center" href="" target="_blank">View in
@@ -89,7 +104,7 @@
                 </div>
 
                 <div class="card shadow-lg bg-body rounded rounded-top m-2">
-                    <img src="Charoite 750x930.gif" class="card-img-top card-image" alt="...">
+                    <img src="images/Charoite 750x930.gif" class="card-img-top card-image" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Charoite</h5>
                         <a class="btn btn-primary d-flex justify-content-center" href="" target="_blank">View in
@@ -98,7 +113,7 @@
                 </div>
 
                 <div class="card shadow-lg bg-body rounded rounded-top m-2">
-                    <img src="Blue Quartz 750x930.gif" class="card-img-top card-image" alt="...">
+                    <img src="images/Blue Quartz 750x930.gif" class="card-img-top card-image" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Blue Quartz</h5>
                         <a class="btn btn-primary d-flex justify-content-center" href="" target="_blank">View in
@@ -108,7 +123,7 @@
 
 
                 <div class="card shadow-lg bg-body rounded rounded-top m-2">
-                    <img src="Ambar 750x930.gif" class="card-img-top card-image" alt="...">
+                    <img src="images/Ambar 750x930.gif" class="card-img-top card-image" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Ambar</h5>
                         <a class="btn btn-primary d-flex justify-content-center" href="" target="_blank">View in
@@ -118,6 +133,66 @@
             </div>
 
         </div>
+
+
+          <script>
+            var buildUrl = "Build";
+            var loaderUrl = buildUrl + "/RockStackerBuild.loader.js";
+            var config = {
+              dataUrl: buildUrl + "/RockStackerBuild.data",
+              frameworkUrl: buildUrl + "/RockStackerBuild.framework.js",
+              codeUrl: buildUrl + "/RockStackerBuild.wasm",
+              streamingAssetsUrl: "StreamingAssets",
+              companyName: "DefaultCompany",
+              productName: "URockStacker",
+              productVersion: "1.0",
+            };
+      
+            var container = document.querySelector("#unity-container");
+            var canvas = document.querySelector("#unity-canvas");
+            var loadingBar = document.querySelector("#unity-loading-bar");
+            var progressBarFull = document.querySelector("#unity-progress-bar-full");
+            var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+            var mobileWarning = document.querySelector("#unity-mobile-warning");
+      
+            // By default Unity keeps WebGL canvas render target size matched with
+            // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+            // Set this to false if you want to decouple this synchronization from
+            // happening inside the engine, and you would instead like to size up
+            // the canvas DOM size and WebGL render target sizes yourself.
+            // config.matchWebGLToCanvasSize = false;
+      
+            if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+              container.className = "unity-mobile";
+              // Avoid draining fillrate performance on mobile devices,
+              // and default/override low DPI mode on mobile browsers.
+              config.devicePixelRatio = 1;
+              mobileWarning.style.display = "block";
+              setTimeout(() => {
+                mobileWarning.style.display = "none";
+              }, 5000);
+            } else {
+              canvas.style.width = "960px";
+              canvas.style.height = "640px";
+            }
+            loadingBar.style.display = "block";
+      
+            var script = document.createElement("script");
+            script.src = loaderUrl;
+            script.onload = () => {
+              createUnityInstance(canvas, config, (progress) => {
+                progressBarFull.style.width = 100 * progress + "%";
+              }).then((unityInstance) => {
+                loadingBar.style.display = "none";
+                fullscreenButton.onclick = () => {
+                  unityInstance.SetFullscreen(1);
+                };
+              }).catch((message) => {
+                alert(message);
+              });
+            };
+            document.body.appendChild(script);
+          </script>
 </body>
 
 </html>
