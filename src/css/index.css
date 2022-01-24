@@ -1,0 +1,276 @@
+@font-face {
+    font-family: 'Cloude_Regular';
+    src: local('MTCORSVA'), url('/src/font/Cloude_Regular_1.02.otf') format('otf'), url('/src/font/Cloude_Regular_1.02.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Dogica';
+    src: local('MTCORSVA'), url('/src/font/dogica.otf') format('otf'), url('/src/font/dogica.ttf') format('truetype');
+}
+
+.game-canvas {
+    width: 1152px;
+    height: 768px;
+    border: 10px double black;
+}
+
+.unity-container {
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: rgb(32, 32, 32);
+    background-image: url("/src/art/loading.png");
+    background-size: cover;
+    width: 1152px;
+    height: 768px;
+    filter: drop-shadow(5px 5px 1px rgb(0, 0, 0));
+    z-index: 1000;
+
+  
+
+}
+
+#layout {
+    display: inline-block;
+    background-color: rgb(66, 42, 14);
+    background-image: url("/src/art/tilemap_tiles_bg.png");
+    background-repeat: repeat;
+    background-position: center;
+    background-size: fill;
+    position:relative;
+}
+
+
+.nav {
+    background-color: rgb(61, 61, 61);
+    background: url(/src/art/banner-left.png) 0 0 no-repeat, url(/src/art/banner-right.png) 100% 0 no-repeat, url(/src/art/banner-mid.png) repeat;
+    height: 64px;
+    width: 100vw;
+    z-index: 100;
+}
+
+#nav-buttons-1 {
+    text-align: center;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 13px;
+    height: 50px;
+}
+
+#nav-buttons-1 a {
+    color: white;
+    text-decoration: none;
+    font-family: Cloude_Regular;
+    font-size: 70px;
+    text-shadow: 2px 2px 2px rgb(17, 17, 17);
+    line-height: 0.5;
+    
+}
+
+.nav-link {
+    background-image: url(/src/art/Button.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: inline-block;
+    width: 180px;
+    height: 40px;
+    transition: all 0.5s;
+}
+
+
+.nav-link:hover {
+    filter: brightness(120%) drop-shadow(4px 4px 1px rgb(0, 0, 0));
+}
+
+#title-logo {
+    display: inline-block;
+    margin: 8px;
+    margin-left: 40px;
+    width: 200px;
+}
+
+#title-logo h2 {
+    font-family: Cloude_Regular;
+    font-size: 70px;
+    text-shadow: 2px 2px 2px rgb(17, 17, 17);
+    line-height: 0.7;
+}
+
+#title-logo::before {
+    content: "";
+    background-image: url(/src/art/tezrockzlogox64.png);
+    background-repeat: no-repeat;
+    width: 48px;
+    height: 48px;
+    background-size: cover;
+    float: left;
+    margin: 1px 6px 0 0;
+}
+
+#syncwallet-container {
+    display: inline-block;
+    position: absolute;
+    margin-top: 10px;
+    top: 0px;
+    right: 0px;
+    width: 400px;
+    text-align: center;
+}
+
+#syncwallet-wallettext {
+    font-family: Cloude_Regular;
+    font-size: 70px;
+    text-shadow: 2px 2px 2px rgb(17, 17, 17);
+    line-height: 0.7;
+    display: inline-block;
+    margin-left: 40px;
+}
+
+#syncwallet-button {
+    background-image: url(/src/art/SyncButton.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: inline-block;
+    width: 150px;
+    height: 40px;
+    transition: all 0.5s;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-family: Cloude_Regular;
+    font-size: 70px;
+    text-shadow: 2px 2px 2px rgb(17, 17, 17);
+    line-height: 0;
+    margin-right: 10px;
+
+
+
+}
+
+#syncwallet-button:hover {
+    filter: brightness(120%) drop-shadow(4px 4px 1px rgb(0, 0, 0));
+}
+
+
+#about-container {
+    font-size: 16px;
+    font-family: Dogica;
+    line-height: 2;
+
+
+}
+
+#about-container p {
+    padding: 10px;
+    text-align: center;
+
+}
+
+#about-container h2 {
+    line-height: 2.5;
+
+    color: rgb(255, 255, 255);
+    text-shadow: 4px 4px 1px #000000;
+
+
+}
+
+
+
+
+#about-container section {
+    margin: 20px;
+    background-color: rgba(0, 0, 0, 0.418);
+    width: 1150px;
+    border: 2px solid #f0b541;
+    transition: all 0.5s;
+
+}
+
+#about-container section a {
+    font-style: bold;
+    font-weight: 900;
+}
+
+#about-container section:hover {
+    filter: brightness(150%) drop-shadow(4px 4px 1px #5d4f30);
+}
+
+#about-container ul {
+    margin: 20px;
+    list-style: none;
+    padding: 10px;
+}
+
+
+#about-container section h2 {
+    text-align: center;
+    background-color: rgb(61, 61, 61);
+    background: url(/src/art/banner2-left.png) 0 0 no-repeat, url(/src/art/banner2-right.png) 100% 0 no-repeat, url(/src/art/banner2-mid.png) repeat;
+    height: 65px;
+
+    outline: 6px solid rgb(0, 0, 0);
+}
+
+#about-container #section-intro {
+    margin-top: 10px;
+}
+
+
+#section-blog ul {
+    list-style: square;
+}
+
+
+#section-credits ul {
+    text-align: center;
+
+}
+
+#section-credits ul a {
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 1px #ff650c;
+
+}
+
+#section-socialmedia {
+    text-align: center;
+    height: 100px;
+}
+
+.link-socialmedia {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    margin: 5px;
+    margin-top: 12px;
+}
+
+
+#link-discord {
+    content: "";
+    background-image: url(/src/art/discordicon.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#link-twitter {
+    content: "";
+    background-image: url(/src/art/twittericon.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+
+.link-socialmedia:hover {
+    filter: brightness(130%) drop-shadow(1px 1px 2px #fff1d4);
+    transition: all 0.5s;
+}
